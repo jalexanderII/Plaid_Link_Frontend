@@ -14,20 +14,8 @@ Here you'll find full example integration apps using our [**client libraries**][
   - [Special instructions for Windows](#special-instructions-for-windows)
 - [2. Set up your environment variables](#2-set-up-your-environment-variables)
 - [3. Run the quickstart](#3-run-the-quickstart)
-  - [Run with Docker](#run-with-docker)
-    - [Pre-requisites](#pre-requisites-1)
-    - [Running](#running-1)
-      - [Start the container](#start-the-container)
-      - [View the logs](#view-the-logs)
-      - [Stop the container](#stop-the-container)
   - [Run without Docker](#run-without-docker)
     - [Pre-requisites](#pre-requisites)
-    - [1. Running the backend](#1-running-the-backend)
-      - [Node](#node)
-      - [Python](#python)
-      - [Ruby](#ruby)
-      - [Go](#go)
-      - [Java](#java)
     - [2. Running the frontend](#2-running-the-frontend)
 - [Testing OAuth](#testing-oauth)
 
@@ -76,54 +64,6 @@ There are two ways to run the various language quickstarts in this repository. Y
 code directly. If you would like to run the code directly, skip to the
 [Run without Docker](#run-without-docker) section.
 
-### Run with Docker
-
-#### Pre-requisites
-
-- `make` available at your command line
-- Docker installed and running on your machine: https://docs.docker.com/get-docker/
-- Your environment variables populated in `.env`
-- If using Windows, a working Linux installation on Windows 10. If you are using Windows and do not already have WSL or Cygwin configured, we recommend [running without Docker](#run-without-docker).
-
-#### Running
-
-There are three basic `make` commands available
-
-- `up`: builds and starts the container
-- `logs`: tails logs
-- `stop`: stops the container
-
-Each of these should be used with a `language` argument, which is one of `node`, `python`, `ruby`,
-`java`, or `go`. If unspecified, the default is `node`.
-
-##### Start the container
-
-```bash
-make up language=node
-```
-
-The quickstart backend is now running on http://localhost:8000 and frontend on http://localhost:3000.
-
-If you make changes to one of the server files such as `index.js`, `server.go`, etc, or to the
-`.env` file, simply run `make up language=node` again to rebuild and restart the container.
-
-If you experience a Docker connection error when running the command above, try the following:
-
-- Make sure Docker is running
-- Try running the command prefixed with `sudo`
-
-##### View the logs
-
-```bash
-make logs language=node
-```
-
-##### Stop the container
-
-```bash
-make stop language=node
-```
-
 ### Run without Docker
 
 #### Pre-requisites
@@ -138,68 +78,6 @@ make stop language=node
 #### 1. Running the backend
 
 Once started with one of the commands below, the quickstart will be running on http://localhost:8000 for the backend. Enter the additional commands in step 2 to run the frontend which will run on http://localhost:3000.
-
-##### Node
-
-```bash
-$ cd ./node
-$ npm ci
-$ ./start.sh
-```
-
-##### Python
-
-**:warning: As `python2` has reached its end of life, only `python3` is supported.**
-
-```bash
-cd ./python
-
-# If you use virtualenv
-# virtualenv venv
-# source venv/bin/activate
-
-pip3 install -r requirements.txt
-./start.sh
-```
-
-If you get this error message:
-
-```txt
-ssl.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:749)
-```
-
-You may need to run the following command in your terminal for your particular version of python in order to install SSL certificates:
-
-```bash
-# examples:
-open /Applications/Python\ 3.9/Install\ Certificates.command
-# or
-open /Applications/Python\ 3.6/Install\ Certificates.command
-```
-
-##### Ruby
-
-```bash
-cd ./ruby
-bundle
-./start.sh
-```
-
-##### Go
-
-```bash
-cd ./go
-go build
-./start.sh
-```
-
-##### Java
-
-```bash
-cd ./java
-mvn clean package
-./start.sh
-```
 
 #### 2. Running the frontend
 
@@ -225,11 +103,7 @@ product enabled.
 [quickstart]: https://plaid.com/docs/quickstart
 [libraries]: https://plaid.com/docs/api/libraries
 [payment-initiation]: https://plaid.com/docs/payment-initiation/
-[node-example]: /node
-[ruby-example]: /ruby
 [python-example]: /python
-[java-example]: /java
 [go-example]: /go
 [docker]: https://www.docker.com
 [dashboard-api-section]: https://dashboard.plaid.com/team/api
-[contact-sales]: https://plaid.com/contact
